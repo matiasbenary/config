@@ -1,0 +1,10 @@
+1 corre este comando para que ejecute y cree la siguiente imagen
+
+docker run --interactive --tty 
+  --volume ~/.composer:/app 
+  --volume ${COMPOSER_HOME:-$HOME/.composer}:/tmp 
+    composer require laravel/pint
+
+2 
+
+docker run --rm -v ~/.composer:/app -v $(pwd):/app/project  -w /app composer ./vendor/bin/pint ./project
