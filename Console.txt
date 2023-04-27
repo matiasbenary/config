@@ -1,0 +1,3 @@
+parceador en consola de csv
+
+cat archivo.csv | awk -F';' '{print "[\"" $1 "\",\"" $4 "\",\"" $6 "\"],"}' > parse.txt

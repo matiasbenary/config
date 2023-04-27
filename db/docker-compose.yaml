@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  db:
+    image: mariadb:10.5.11
+    container_name: fonselp-db-global
+    restart: unless-stopped
+    command: --max_allowed_packet=67108864
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    ports:
+      - 3306:3306
+    volumes:
+      # - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+      - /var/lib/mysql:/var/lib/mysql:rw
+    networks:
+      - db_fonselp
+
+networks:
+  db_fonselp:
+    driver: bridge

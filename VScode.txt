@@ -1,0 +1,7 @@
+Cambiar de objeto a array en php
+find ->(\w+),\
+replace ['$1'],
+
+Cambiar $var a $this->var = $var
+find \$([a-zA-Z0-9]*)
+replace $this->$1 = $$$1
