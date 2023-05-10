@@ -111,10 +111,12 @@ alias sshf='ssh -i ~/.ssh/fonselp-webapp_key.pem azureuser@52.147.176.9'
 alias sshp='ssh -f -N -i ~/.ssh/fonselp-webapp_key.pem -L 33069:fonselp-db-master.mysql.database.azure.com:3306 -L 63790:localhost:6379  azureuser@52.147.176.9'
 alias pint='sail exec laravel.test "./vendor/bin/pint"'
 alias pintd='docker run --rm -v ~/.composer:/app -v $(pwd):/app/project  -w /app composer ./vendor/bin/pint ./project'
+alias pintf='docker run --rm -v ~/.composer:/app -v $(pwd):/app/project  -w /app composer ./vendor/bin/pint $(git status -s | awk "{print \"./project/\" \$2}")'
 alias codec='code ~/.zshrc'
 alias reload='source ~/.zshrc'
 alias gitsp='git -c color.status=always status --short | fzf --height 100% --ansi --preview "(git diff HEAD --color=always -- {-1} | sed 1,4d)" --preview-window right:65% | cut -c4- | sed "s/.* -> //" | tr -d "\n"'
 alias gitl='pintd && git add -A && gitsp'
+alias gitf='pintf && git add -A && gitsp'
 alias gita='git add -A && gitsp'
 
 function dc() {
